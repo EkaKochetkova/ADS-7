@@ -4,6 +4,11 @@
 
 template<typename T>
 class TPQueue {
+  
+   public:
+      TPQueue(): head(nullptr), tail(nullptr) {}
+      void push(const T&);
+      T pop();
   private:
     struct ITEM {
         T data;
@@ -60,11 +65,10 @@ T TPQueue<T>::pop() {
             tail = nullptr;
         }
         return data;
-    }
-    else {
+    } else {
         throw "Is Empty!";
     }
-};
+}
 struct SYM {
   char ch;
   int prior;
