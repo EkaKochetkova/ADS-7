@@ -4,12 +4,11 @@
 
 template<typename T>
 class TPQueue {
-  
    public:
       TPQueue(): head(nullptr), tail(nullptr) {}
       void push(const T&);
       T pop();
-  private:
+   private:
     struct ITEM {
         T data;
         ITEM* next;
