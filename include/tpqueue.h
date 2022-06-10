@@ -4,11 +4,11 @@
 
 template<typename T>
 class TPQueue {
-   public:
+ public:
       TPQueue(): head(nullptr), tail(nullptr) {}
       void push(const T&);
       T pop();
-   private:
+ private:
     struct ITEM {
         T data;
         ITEM* next;
@@ -35,14 +35,14 @@ void TPQueue <T>::push(const T& data) {
     }
     if (!temp && head) {
         tail->next = item;
-        tail->next->prev = tail;
-        tail = tail->next;
+        item->prev = tail;
+        tail = item;
     } else if (!temp && !head) {
         head = tail = item;
     } else if (!temp->prew) {
         head->prew = item;
         item->next = head;
-        head = head->prev;
+        head = item;
     } else {
         temp->prew->next = item;
         item->prew = temp->prew;
