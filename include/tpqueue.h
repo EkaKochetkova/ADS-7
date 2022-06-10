@@ -12,7 +12,7 @@ class TPQueue {
         ITEM* prev;
     };
     TPQueue::ITEM* create(const T& value) {
-        ITEM* item = new Item;
+        ITEM* item = new ITEM;
         item->data = data;
         item->next = nullptr;
         item->prev = nullptr;
