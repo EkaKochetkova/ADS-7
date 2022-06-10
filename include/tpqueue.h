@@ -59,7 +59,7 @@ class TPQueue {
             }
             return data;
         } else {
-            throw std::string("Empty");
+            throw "Empty";
         }
     }
 };
