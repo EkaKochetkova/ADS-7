@@ -23,7 +23,7 @@ typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& val) {
     ITEM* temp = new ITEM;
     temp->val = val;
     temp->next = nullptr;
-    temp->prew = nullptr;
+    temp->prev = nullptr;
     return temp;
 }
 template<typename T>
@@ -39,15 +39,15 @@ void TPQueue <T>::push(const T& data) {
         tail = item;
     } else if (!temp && !head) {
         head = tail = item;
-    } else if (!temp->prew) {
-        head->prew = item;
+    } else if (!temp->prev) {
+        head->prev = item;
         item->next = head;
         head = item;
     } else {
-        temp->prew->next = item;
-        item->prew = temp->prew;
+        temp->prev->next = item;
+        item->prev = temp->prev;
         item->next = temp;
-        temp->prew = item;
+        temp->prev = item;
     }
 }
 template<typename T>
@@ -55,7 +55,7 @@ T TPQueue<T>::pop() {
     if (head && tail) {
         ITEM* temp = head->next;
         if (temp) {
-            temp->prew = nullptr;
+            temp->prev = nullptr;
         }
         T data = head->val;
         delete head;
