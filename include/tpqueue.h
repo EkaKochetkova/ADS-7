@@ -12,19 +12,20 @@ class TPQueue {
     };
     TPQueue::Item* create(const T& value) {
         ITEM* item = new Item;
-        item->value = value;
+        item->data = data;
         item->next = nullptr;
         item->prev = nullptr;
         return item;
     }
     ITEM* head;
     ITEM* tail;
+ 
  public:
     TPQueue(): head(nullptr), tail(nullptr) {}
     void push(const T& value) {
         ITEM* comp = head;
         ITEM* item = create(data);
-        while (comp && comp->value.prior >= value.prior) {
+        while (comp && comp->data.prior >= data.prior) {
             comp = comp->next;
         }
         if (head && !comp) {
@@ -43,20 +44,20 @@ class TPQueue {
             item->next = comp;
             comp->prev = item;
         }
-    }
+  }
  T pop() {
         if (head && tail) {
             ITEM* comp = head->next;
             if (comp) {
                 comp->prev = nullptr;
             }
-            T value = head->value;
+            T data = head->data;
             delete head;
             head = comp;
             if (!head) {
                 tail = nullptr;
             }
-            return value;
+            return data;
         } else {
             throw std::string("Empty");
         }
